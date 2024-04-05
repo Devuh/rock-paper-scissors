@@ -35,6 +35,8 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
+/*
+
 function playGame() {
     let playerScore = 0;
     let computerScore = 0;
@@ -56,4 +58,12 @@ function playGame() {
     return "Final Score: Player - " + playerScore + " Computer - " + computerScore;
 }
 
-console.log(playGame());
+*/
+
+let selection = document.querySelector("#selection");
+
+selection.addEventListener("click", (event) => {
+    let target = event.target;
+
+    console.log(playRound(target.id, getComputerChoice()));
+});
