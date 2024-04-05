@@ -60,10 +60,34 @@ function playGame() {
 
 */
 
+let playerScore = 0;
+let computerScore = 0;
+
+let results = document.querySelector("#results");
 let selection = document.querySelector("#selection");
 
 selection.addEventListener("click", (event) => {
     let target = event.target;
+    let result = playRound(target.id, getComputerChoice());
+    
+    if(result.charAt(4) == "w") {
+        playerScore++;
+    }else if(result.charAt(4) == "l") {
+        computerScore++;
+    }
 
-    console.log(playRound(target.id, getComputerChoice()));
+    if(playerScore === 5) {
+        results.textContent = "You win! Final score is " + playerScore + ":" + computerScore;
+        playerScore = 0;
+        computerScore = 0;
+    } else if(computerScore === 5) {
+        results.textContent = "You lose! Final score is " + playerScore + ":" + computerScore;
+        playerScore = 0;
+        computerScore = 0;
+    } else {
+        results.textContent = result + " " + playerScore + ":" + computerScore;
+    }
 });
+
+
+
